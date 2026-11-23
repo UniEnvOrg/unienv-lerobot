@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "unienv_lerobot"
+version = "0.0.1a1"
+description = "LeRobot for UniEnv: LeRobot policies (ACT, Diffusion, SmolVLA, pi0, ...) as UniEnv policies, with asynchronous Real-Time Chunking"
+readme = "README.md"
+license = "Apache-2.0"
+requires-python = ">=3.12"
+dependencies = [
+    "unienv>=0.0.1b17",
+    "lerobot>=0.7,<0.8",
+    "torch",
+    "numpy",
+]
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[project.urls]
+Homepage = "https://github.com/UniEnvOrg/unienv-lerobot"
+Repository = "https://github.com/UniEnvOrg/unienv-lerobot"
+Issues = "https://github.com/UniEnvOrg/unienv-lerobot/issues"
+Changelog = "https://github.com/UniEnvOrg/unienv-lerobot/blob/main/CHANGELOG.md"
+
+[tool.setuptools.packages.find]
+include = ["unienv_lerobot*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["gpu: needs a CUDA GPU and downloads models (run with --run-gpu)"]
