@@ -25,10 +25,7 @@ jobs:
         python -m pip install --upgrade pip
         # CPU builds of torch keep the job small; the tests need no GPU
         pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
-        pip install "lerobot>=0.7,<0.8" pytest
-        # The policy interface with observe_transition(..., dt) is on UniEnv's main branch until 0.0.1b17 is released
-        pip install "unienv @ git+https://github.com/UniEnvOrg/UniEnv@main"
-        pip install --no-deps -e .
+        pip install -e ".[test]"
     - name: Test with pytest
       run: |
         pytest tests

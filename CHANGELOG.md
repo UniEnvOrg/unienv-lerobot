@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.0.1a1 (unreleased)
+## 0.0.1a1 (2026-11-23)
 
 - Initial release: `LeRobotPolicy`, a LeRobot `PreTrainedPolicy` with its pre- and postprocessors as a UniEnv
   `Policy` (`from_pretrained(repo_or_path, env)`).
