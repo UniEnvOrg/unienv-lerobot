@@ -100,6 +100,20 @@ server.register_factory("pi", lambda: LeRobotPolicy.from_pretrained(..., mode="a
 
 and use `client.policy("pi")` on the robot side (`examples/serve_policy.py`).
 
+## Validation
+
+`lerobot/smolvla_libero` on LIBERO-Spatial (10 tasks x initial states 0-2, 360x360 renders, as `lerobot-eval`),
+LeRobot 0.7.0:
+
+| run | success |
+|---|---|
+| `lerobot-eval` (LeRobot's own loop and LIBERO env) | 18 / 30 |
+| `LeRobotPolicy`, sync, on unienv-libero | 18 / 30 |
+| `LeRobotPolicy`, async + RTC, 0.15 s simulated latency | 17 / 30 |
+| `LeRobotPolicy`, async without RTC, 0.15 s | 17 / 30 |
+
+The sync run and `lerobot-eval` agree on 25 of the 30 episodes; the rest is the policy's sampling noise.
+
 ## Examples
 
 - `examples/libero_smolvla.py`: `lerobot/smolvla_libero` on LIBERO suites, sync or async (`--mode async
